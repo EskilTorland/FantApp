@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">FantApp</string>
+    <string name="navigation_drawer_open">Open navigation drawer </string>
+    <string name="navigation_drawer_close">Open navigation drawer</string>
+    <string name="prompt_name">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_login_button">Login</string>
+   <string name="login_header">Log In To Fant</string>
+    <string name="action_reg_button">Register</string>
+    <string name="prompt_email">Email</string>
+    <string name="register_header">Register To Fant</string>
+</resources>
