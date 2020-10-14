@@ -5,8 +5,16 @@
     <string name="prompt_name">Username</string>
     <string name="prompt_password">Password</string>
     <string name="action_login_button">Login</string>
-   <string name="login_header">Log In To Fant</string>
+    <string name="login_header">Log In To Fant</string>
     <string name="action_reg_button">Register</string>
     <string name="prompt_email">Email</string>
     <string name="register_header">Register To Fant</string>
+    <string name="additem_button">Add Item</string>
+   <string name ="prompt_title">Title</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="prompt_description">Description</string>
+    <string name="prompt_price">Price</string>
+    <string name="additem_header">Add Item</string>
+
 </resources>

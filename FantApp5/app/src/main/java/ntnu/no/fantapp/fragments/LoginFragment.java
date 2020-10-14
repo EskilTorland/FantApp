@@ -11,8 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.io.IOException;
+
 import ntnu.no.fantapp.ApiClient;
 import ntnu.no.fantapp.R;
+import ntnu.no.fantapp.UserPrefs;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,6 +24,7 @@ import retrofit2.Response;
 public class LoginFragment extends Fragment implements View.OnClickListener {
    private EditText editName;
    private EditText editPassword;
+
 
     @Nullable
     @Override
@@ -46,6 +50,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         String uid = editName.getText().toString().trim();
         String pwd = editPassword.getText().toString().trim();
 
+        final UserPrefs userPrefs = new UserPrefs(getContext());
+
         if (uid.isEmpty()) {
             editName.setError("Please fill in a name");
             editName.requestFocus();
@@ -59,11 +65,16 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         Call<ResponseBody> call = ApiClient.getSingleton().getApi().loginUser(uid,pwd);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response)
+            {
                 if(response.isSuccessful()){
-                    Toast.makeText(getActivity(), "Login Success", Toast.LENGTH_LONG).show();
-                    System.out.println("suck");
-
+                    try {
+                        Toast.makeText(getActivity(), "Login Success", Toast.LENGTH_LONG).show();
+                        userPrefs.setToken(response.body().string());
+                    }
+                    catch (IOException e){
+                        e.printStackTrace();
+                    }
                 }else {
                     Toast.makeText(getActivity(), "Login failed", Toast.LENGTH_LONG).show();
                 }
